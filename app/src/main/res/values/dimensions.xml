@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="about_content_spacing">12dp</dimen>
+    <dimen name="about_content_spacing_bottom">15dp</dimen>
+    <dimen name="app_icon_size">48dp</dimen>
+
+    <dimen name="list_item_padding">16dp</dimen>
+    <dimen name="list_item_margin">4dp</dimen>
+    <dimen name="item_icon_size">70dp</dimen>
+</resources>

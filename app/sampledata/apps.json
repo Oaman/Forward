@@ -1,0 +1,8 @@
+{
+  "apps" :[
+    {"appname": "App 1", "description" : "Short description of app1", "installbutton" : "Install"},
+    {"appname": "App 2", "description" : "Short description of app2", "installbutton" : "Update"},
+    {"appname": "App 3", "description" : "Short description of app3", "installbutton" : "Open"},
+    {"appname": "App 4", "description" : "Short description of app4", "installbutton" : "Installing"}
+  ]
+}

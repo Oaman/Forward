@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="orange">#F16E00</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="gray">#999999</color>
+    <color name="color_list_divide">#262626</color>
+    <color name="list_background">#ffeeeeee</color>
+    <color name="item_divider_color">#1f000000</color>
+    <color name="item_divider_light_color">#262626</color>
+    <color name="settings_divider_color">#1F000000</color>
+
+    <color name="green">#32c832</color>
+    <color name="sosh_blue">#00A1AB</color>
+
+    <color name="icon_overlay_color">#d8333333</color>
+
+    <color name="status_text_color">#999999</color>
+    <color name="action_bar_bg_purple">#A885D8</color>
+    <color name="action_bar_bg_green">#50BE87</color>
+    <color name="action_bar_bg_blue">#33CCFF</color>
+    <color name="action_bar_bg_consent">#bfebf7</color>
+    <color name="action_bar_bg_pink">#f23369</color>
+    <color name="action_bar_bg_yellow">#FBCD00</color>
+    <color name="action_bar_bg_light_dark">#333333</color>
+</resources>
