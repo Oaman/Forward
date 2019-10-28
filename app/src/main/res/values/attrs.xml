@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyCollapsingToolbarLayout">
+        <!--  Whether the InsetTop should be considered while measuring the height -->
+        <attr name="ignoreInsetTopInHeight" format="boolean" />
+    </declare-styleable>
+</resources>
