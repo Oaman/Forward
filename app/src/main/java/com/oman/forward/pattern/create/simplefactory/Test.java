@@ -1,4 +1,4 @@
-package com.oman.forward.pattern.create.factory;
+package com.oman.forward.pattern.create.simplefactory;
 
 /**
  * @author:ZhouJiang
