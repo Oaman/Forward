@@ -1,4 +1,4 @@
-package com.oman.forward.pattern.behavior;
+package com.oman.forward.pattern.behavior.strategy;
 
 public class Strategy1 implements Strategy {
 
