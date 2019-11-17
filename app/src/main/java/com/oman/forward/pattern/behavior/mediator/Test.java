@@ -1,11 +1,5 @@
 package com.oman.forward.pattern.behavior.mediator;
 
-/**
- * @author：ZhouJiang
- * @date：2018/2/1 17:02
- * @email：zhoujiang2012@163.com
- */
-
 public class Test {
     public static void main(String[] args) {
 
