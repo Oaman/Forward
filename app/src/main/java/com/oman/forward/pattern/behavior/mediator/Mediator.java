@@ -1,11 +1,5 @@
 package com.oman.forward.pattern.behavior.mediator;
 
-/**
- * @author：ZhouJiang
- * @date：2018/2/1 17:05
- * @email：zhoujiang2012@163.com
- */
-
 public class Mediator implements IMediator {
     private Worker1 mUser1;
     private Worker2 mUser2;
