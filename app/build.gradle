@@ -1,11 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
+    dataBinding {
+        enabled = true
+    }
     defaultConfig {
-        applicationId "com.oman.test"
+        applicationId "com.oman.forward"
         minSdkVersion rootProject.ext.minSdk
         targetSdkVersion rootProject.ext.targetSdk
         versionCode 1
@@ -18,12 +22,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = 1.8
+    }
+
     lintOptions {
         disable 'GoogleAppIndexingWarning'
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 }
 
 dependencies {
+    kapt "android.arch.persistence.room:compiler:1.0.0"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "androidx.appcompat:appcompat:$androidxAppcompatVersion"
     implementation "androidx.core:core-ktx:$coreKtxVersion"
@@ -32,9 +50,25 @@ dependencies {
     implementation "org.greenrobot:eventbus:$eventBusVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
+
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+
+    implementation "androidx.work:work-runtime-ktx:$rootProject.workVersion"
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    implementation "jp.wasabeef:glide-transformations:$rootProject.trasnVersion"
+
     testImplementation "junit:junit:$junitVersion"
     testImplementation "androidx.test.ext:junit:$androidxTestExtJunitVersion"
     testImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    testImplementation "org.robolectric:robolectric:${rootProject.ext.robolectricVersion}"
+    testImplementation "androidx.arch.core:core-runtime:$rootProject.archCoreVersion"
+    testImplementation "androidx.arch.core:core-testing:$rootProject.archCoreVersion"
 }
 repositories {
     mavenCentral()

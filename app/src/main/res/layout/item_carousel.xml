@@ -13,7 +13,7 @@
     card_view:cardCornerRadius="2dp"
     card_view:cardElevation="2dp"
     card_view:cardPreventCornerOverlap="true"
-    tools:context=".DashboardActivity"
+    tools:context=".TestActivity"
     tools:showIn="@layout/carousel">
 
     <RelativeLayout

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <data>
+
+        <variable
+            name="comment"
+            type="com.oman.forward.db.entity.CommentEntity" />
+    </data>
+
+    <TextView
+        android:id="@+id/commentView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/list_item_margin"
+        android:text="@{comment.comment}"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        tools:showIn="@layout/fragment_comments" />
+
+</layout>

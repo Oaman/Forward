@@ -17,7 +17,7 @@ import com.oman.forward.R
  * @email:zhoujiang2012@163.com
 
  */
-class DashAdapter(
+class TestAdapter(
         private val context: Context,
         private val apps: List<List<String>>,
         private val categories: List<String>,
