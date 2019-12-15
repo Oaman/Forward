@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/apps_list_fragment"
+        android:title="@string/apps_list" />
+
+    <item
+        android:id="@+id/my_apps_fragment"
+        android:title="@string/my_apps" />
+
+    <item
+        android:id="@+id/test_activity"
+        android:title="@string/my_test" />
+</menu>

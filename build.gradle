@@ -5,7 +5,7 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.2'
@@ -27,7 +27,7 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-ext{
+ext {
     // Sdk and tools
     minSdk = 21
     targetSdk = 29
@@ -42,4 +42,14 @@ ext{
     junitVersion = '4.12'
     androidxTestExtJunitVersion = '1.1.1'
     espressoVersion = '3.3.0-alpha01'
+    robolectricVersion = '4.2'
+    archCoreVersion = '2.1.0'
+
+    navigationVersion = '2.1.0'
+    lifecycleVersion = '2.2.0-alpha01'
+    roomVersion = '2.1.0'
+    workVersion = '2.1.0-alpha02'
+    gsonVersion = '2.8.2'
+    ext.glideVersion = '4.9.0'
+    ext.trasnVersion = "4.0.1"
 }

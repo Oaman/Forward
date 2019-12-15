@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@+id/apps_list_fragment">
+    <fragment
+        android:id="@+id/apps_list_fragment"
+        android:name="com.oman.forward.AppsListFragment"
+        android:label="@string/apps_list"
+        tools:layout="@layout/fragment_apps_list">
+        <action
+            android:id="@+id/action_apps_list_fragment_to_comments_detail_fragment"
+            app:destination="@id/comments_detail_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/my_apps_fragment"
+        android:name="com.oman.forward.MyAppsFragment"
+        android:label="@string/my_apps"
+        tools:layout="@layout/fragment_my_apps" />
+
+    <activity
+        android:id="@+id/test_activity"
+        android:name="com.oman.forward.TestActivity"
+        android:label="@string/my_test"
+        tools:layout="@layout/activity_test" />
+
+    <fragment
+        android:id="@+id/comments_detail_fragment"
+        android:name="com.oman.forward.CommentsFragment"
+        android:label="@string/comments"
+        tools:layout="@layout/fragment_comments">
+        <argument
+            android:name="packageName"
+            app:argType="java.lang.String" />
+    </fragment>
+</navigation>

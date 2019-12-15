@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="app"
+            type="com.oman.forward.db.entity.AppEntity" />
+
+        <variable
+            name="callback"
+            type="com.oman.forward.callback.OnAppItemClickListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/list_item_margin"
+        android:layout_marginEnd="@dimen/list_item_margin"
+        android:layout_marginBottom="@dimen/list_item_margin"
+        android:background="@color/status_text_color"
+        android:foreground="?android:selectableItemBackground"
+        android:onClick="@{()->callback.onItemClick(app)}"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="2dp"
+        tools:showIn="@layout/fragment_apps_list">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/appIcon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="8dp"
+                android:src="@mipmap/ic_launcher"
+                app:imageUrl="@{app.icon}"/>
+
+            <TextView
+                android:id="@+id/appName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/appIcon"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/list_item_margin"
+                android:layout_toEndOf="@id/appIcon"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="@{app.versionLabel}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textStyle="bold"
+                tools:text="@sample/apps.json/apps/appname" />
+
+            <TextView
+                android:id="@+id/appDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/appName"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/list_item_margin"
+                android:layout_toEndOf="@id/appIcon"
+                android:gravity="center"
+                android:text="@{app.description}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                tools:text="@sample/apps.json/apps/description" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,54 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:collapsedTitleTextAppearance="@style/AppBarTitle"
-            app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleTextAppearance="@style/TransparentTitle"
-            app:layout_scrollFlags="scroll|enterAlwaysCollapsed|exitUntilCollapsed"
-            app:title="@string/app_name"
-            app:toolbarId="@id/toolbar">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:src="@drawable/banner"
-                    app:layout_constraintDimensionRatio="2.048:1"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:elevation="4dp"
-                app:layout_collapseMode="pin"
-                app:title="@string/menu_selection"
-                app:titleTextAppearance="@style/AppBarTitle" />
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/appList"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:elevation="4dp"
+                    app:titleTextAppearance="@style/AppBarTitle" />
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <fragment
+                android:id="@+id/apps_nav_fragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/navigation_main" />
+        </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation_view"
+            style="@style/Widget.MaterialComponents.NavigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/header_layout"
+            app:itemTextColor="@color/menu_item_selector"
+            app:menu="@menu/menu_navigation" />
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>
