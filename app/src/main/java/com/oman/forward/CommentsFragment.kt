@@ -33,11 +33,11 @@ class CommentsFragment : Fragment() {
         val adapter = CommentsAdapter()
         binding.commentsList.adapter = adapter
 
-        detailModel.app.observe(this, Observer {
+        detailModel.app.observe(viewLifecycleOwner, Observer {
             detailModel.myApp.set(it)
         })
 
-        detailModel.comments.observe(this, Observer {
+        detailModel.comments.observe(viewLifecycleOwner, Observer {
             if (it != null && it.isNotEmpty()) {
                 binding.isLoading = false
                 adapter.setList(it)

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.oman.forward.adapter.AppListAdapter
@@ -53,8 +54,7 @@ class AppsListFragment : Fragment() {
             }
         })
         binding.appList.adapter = adapter
-        viewModel.apps.observe(this, Observer {
-            Log.i("aaa", "${lifecycle.currentState}: ${it.isNullOrEmpty()}")
+        viewModel.apps.observe(viewLifecycleOwner, Observer {
             if (it.isNullOrEmpty()) {
                 binding.loading = true
             } else {
