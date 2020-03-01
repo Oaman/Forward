@@ -2,11 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.oman.forward">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_like_on"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_like_on"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="com.oman.forward.DashboardActivity">
@@ -17,7 +19,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.oman.forward.DetailActivity"/>
+        <activity android:name="com.oman.forward.DetailActivity" />
         <activity android:name=".TestActivity" />
     </application>
 

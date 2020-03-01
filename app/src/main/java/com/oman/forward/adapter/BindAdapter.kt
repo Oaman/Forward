@@ -14,7 +14,6 @@ fun show(view: View, visible: Boolean) {
 
 @BindingAdapter("imageUrl")
 fun bindImageUrl(view: ImageView, imageUrl: String?) {
-    Log.i("aaa", "imageUrl: $imageUrl")
     if (!imageUrl.isNullOrEmpty()) {
         Glide.with(view.context)
                 .asBitmap()
