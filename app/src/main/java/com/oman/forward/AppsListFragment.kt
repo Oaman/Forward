@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.ComponentActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -17,6 +18,7 @@ import com.oman.forward.databinding.FragmentAppsListBinding
 import com.oman.forward.db.entity.AppEntity
 import com.oman.forward.viewmodel.AppsViewModel
 import com.oman.forward.viewmodel.FactoryProvider
+import com.oman.forward.worker.CountWorker
 
 /**
 
@@ -46,6 +48,7 @@ class AppsListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        CountWorker.enqueue(activity as ComponentActivity)
         adapter = AppListAdapter(object : OnAppItemClickListener {
             override fun onItemClick(app: AppEntity) {
                 val bundle = Bundle()

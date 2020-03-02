@@ -9,6 +9,7 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequest
 import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import com.oman.forward.db.dao.AppsDao
 import com.oman.forward.db.dao.CommentsDao
@@ -17,6 +18,7 @@ import com.oman.forward.db.entity.CommentEntity
 import com.oman.forward.worker.AppsWorker
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 @Database(entities = [AppEntity::class, CommentEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
@@ -46,7 +48,9 @@ abstract class AppDatabase : RoomDatabase() {
                             executors.execute {
                                 Thread.sleep(3000)
                                 val request: OneTimeWorkRequest = OneTimeWorkRequestBuilder<AppsWorker>().build()
-                                WorkManager.getInstance(context).enqueue(request)
+                                val periodicWorkRequest = PeriodicWorkRequest.Builder(AppsWorker::class.java,
+                                        1, TimeUnit.HOURS).build();
+                                WorkManager.getInstance(context).enqueue(periodicWorkRequest)
                             }
                         }
                     })
