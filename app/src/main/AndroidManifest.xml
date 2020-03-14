@@ -29,6 +29,11 @@
         <service
             android:name=".ipc.NumberToRomanService"
             android:exported="true" />
+
+        <provider
+            android:name=".ipc.NumberToRomanProvider"
+            android:authorities="com.oman.forward.provider.numbertoromanprovider"
+            android:exported="true" />
     </application>
 
 </manifest>

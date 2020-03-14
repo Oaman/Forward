@@ -7,9 +7,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.oman.common.Constants
 import com.oman.common.Constants.Companion.IPC_RECEIVER_ACTION_ROMAN
 import com.oman.common.Constants.Companion.PACKAGE_NAME_FORWARD
+import com.oman.common.NumberToRomanProviderInstance
 import com.oman.forward.INumberToRoman
 
 class MainActivity : AppCompatActivity() {
@@ -51,10 +51,18 @@ class MainActivity : AppCompatActivity() {
                     Log.i("aaa", "client: ${binder.numberToRoman(1234)}")
                     service.linkToDeath({
                         Log.i("aaa", "death: ")
-                    },0)
+                    }, 0)
                 }
 
             }, Context.BIND_AUTO_CREATE)
         }
+    }
+
+    fun ipcProvider(view: View) {
+        NumberToRomanProviderInstance.getInstance(this)
+                .getRoman(this, 1000)
+                .let {
+                    Log.i("aaa", "provider: $it")
+                }
     }
 }
