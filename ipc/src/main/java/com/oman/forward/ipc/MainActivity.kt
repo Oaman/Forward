@@ -1,15 +1,14 @@
 package com.oman.forward.ipc
 
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
+import android.content.*
 import android.os.Bundle
+import android.os.IBinder
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.oman.common.Constants.Companion.IPC_RECEIVER_ACTION_ROMAN
+import com.oman.forward.INumberToRoman
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,5 +36,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun ipcAIDL(view: View) {
+        with(Intent()) {
+            setPackage("com.oman.forward")
+            setClassName("com.oman.forward", "com.oman.forward.ipc.NumberToRomanService")
+            bindService(this, object : ServiceConnection {
+                override fun onServiceDisconnected(name: ComponentName?) {
+                }
+
+                override fun onServiceConnected(name: ComponentName, service: IBinder) {
+                    val binder = INumberToRoman.Stub.asInterface(service)
+                    Log.i("aaa", "client: ${binder.numberToRoman(1234)}")
+                }
+
+            }, Context.BIND_AUTO_CREATE)
+        }
     }
 }
