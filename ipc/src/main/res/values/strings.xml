@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">IPC</string>
+    <string name="ipc_bundle">IPC Bundle</string>
+    <string name="ipc_aidl">IPC AIDL</string>
+</resources>
