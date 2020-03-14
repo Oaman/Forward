@@ -7,7 +7,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.oman.common.Constants
 import com.oman.common.Constants.Companion.IPC_RECEIVER_ACTION_ROMAN
+import com.oman.common.Constants.Companion.PACKAGE_NAME_FORWARD
 import com.oman.forward.INumberToRoman
 
 class MainActivity : AppCompatActivity() {
@@ -37,15 +39,19 @@ class MainActivity : AppCompatActivity() {
 
     fun ipcAIDL(view: View) {
         with(Intent()) {
-            setPackage("com.oman.forward")
-            setClassName("com.oman.forward", "com.oman.forward.ipc.NumberToRomanService")
+            setPackage(PACKAGE_NAME_FORWARD)
+            setClassName(PACKAGE_NAME_FORWARD, "com.oman.forward.ipc.NumberToRomanService")
             bindService(this, object : ServiceConnection {
                 override fun onServiceDisconnected(name: ComponentName?) {
+                    Log.i("aaa", "death2: ")
                 }
 
                 override fun onServiceConnected(name: ComponentName, service: IBinder) {
                     val binder = INumberToRoman.Stub.asInterface(service)
                     Log.i("aaa", "client: ${binder.numberToRoman(1234)}")
+                    service.linkToDeath({
+                        Log.i("aaa", "death: ")
+                    },0)
                 }
 
             }, Context.BIND_AUTO_CREATE)
