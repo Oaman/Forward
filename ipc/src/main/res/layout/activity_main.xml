@@ -27,4 +27,15 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ipc_bundle" />
 
+
+    <Button
+        android:id="@+id/ipc_provider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ipc_provider"
+        android:onClick="ipcProvider"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ipc_aidl" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
