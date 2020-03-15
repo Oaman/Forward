@@ -3,7 +3,7 @@
     package="com.oman.forward">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <permission android:name="com.oman.forward.permission.ROMAN_RECEIVER" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_like_on"
@@ -24,6 +24,7 @@
 
         <receiver
             android:name=".ipc.RomanReceiver"
+            android:permission="com.oman.forward.permission.ROMAN_RECEIVER"
             android:exported="true" />
 
         <service
