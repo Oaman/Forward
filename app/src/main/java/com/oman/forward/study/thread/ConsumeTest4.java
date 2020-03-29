@@ -1,4 +1,4 @@
-package com.oman.forward.study;
+package com.oman.forward.study.thread;
 
 import java.util.concurrent.ArrayBlockingQueue;
 

@@ -1,21 +1,15 @@
-package com.oman.forward.study;
+package com.oman.forward.study.thread;
 
 import java.util.ArrayList;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author:ZhouJiang
  * @date:2020/3/23 18:22
  * @email:zhoujiang2012@163.com
  */
-public class ConsumeTest3 {
+public class ConsumeTest2 {
 
     private static final ArrayList<String> list = new ArrayList<>(5);
-    private static Lock lock = new ReentrantLock();
-    private static Condition product = lock.newCondition();
-    private static Condition consume = lock.newCondition();
 
     public static void main(String[] args) {
         new Thread(new ConsumerImpl(), "consume thread").start();
@@ -27,12 +21,11 @@ public class ConsumeTest3 {
         @Override
         public void run() {
             while (true) {
-                lock.lock();
-                try {
+                synchronized (list) {
                     if (list.size() == 0) {
                         try {
                             System.out.println("size = 0, consume wait");
-                            consume.await();
+                            list.wait();
                             System.out.println("consume wait finish");
                         } catch (InterruptedException e) {
                             e.printStackTrace();
@@ -45,9 +38,7 @@ public class ConsumeTest3 {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    product.signal();
-                } finally {
-                    lock.unlock();
+                    list.notify();
                 }
             }
         }
@@ -58,12 +49,11 @@ public class ConsumeTest3 {
         @Override
         public void run() {
             while (true) {
-                lock.lock();
-                try {
+                synchronized (list) {
                     if (list.size() == 5) {
                         try {
                             System.out.println("size = 5, product wait");
-                            product.await();
+                            list.wait();
                             System.out.println("product wait finish");
                         } catch (InterruptedException e) {
                             e.printStackTrace();
@@ -77,9 +67,7 @@ public class ConsumeTest3 {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    consume.signal();
-                } finally {
-                    lock.unlock();
+                    list.notify();
                 }
             }
         }
