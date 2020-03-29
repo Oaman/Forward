@@ -1,11 +1,11 @@
-package com.oman.forward.study;
+package com.oman.forward.study.thread;
 
 /**
  * @author:ZhouJiang
  * @date:2020/3/23 21:45
  * @email:zhoujiang2012@163.com
  */
-public class SynchronizedTest3 {
+public class SynchronizedTest2 {
     static class Thread1 extends Thread {
         Utils mUtils;
 
@@ -36,7 +36,7 @@ public class SynchronizedTest3 {
 
     static class Utils {
         void method1() {
-            synchronized (Utils.class) {
+            synchronized (Utils.this) {
                 System.out.println("method1 exec before -- threadName:" + Thread.currentThread().getName());
                 try {
                     Thread.sleep(1000);
@@ -48,7 +48,7 @@ public class SynchronizedTest3 {
         }
 
         void method2() {
-            synchronized (Utils.class) {
+            synchronized (Utils.this) {
                 System.out.println("method2 exec before -- threadName:" + Thread.currentThread().getName());
                 try {
                     Thread.sleep(1000);
@@ -60,7 +60,7 @@ public class SynchronizedTest3 {
         }
     }
 
-    //synchronized(xxx.class)加锁, 不管线程中传入的是不是同一个对象，都是同步
+    //synchronized(this)代码块加锁,传入同一个对象是同步，如果传入的不是同一个对象就是异步
     public static void main(String[] args) {
         Utils utils = new Utils();
         Utils utils2 = new Utils();
