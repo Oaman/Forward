@@ -1,14 +1,14 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.3.61'
+    ext.kotlin_version = '1.3.71'
     repositories {
         google()
         jcenter()
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.0'
+        classpath 'com.android.tools.build:gradle:3.6.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -37,12 +37,12 @@ ext {
     materialVersion = '1.0.0'
     eventBusVersion = '3.1.1'
     kotlinVersion = '1.3.40'
-    fragmentVersion = '1.2.2'
+    fragmentVersion = '1.2.4'
 
     navigationVersion = '2.2.1'
     lifecycleVersion = '2.2.0'
-    roomVersion = '2.2.4'
-    workVersion = '2.3.2'
+    roomVersion = '2.2.5'
+    workVersion = '2.3.4'
     pagingVersion = '2.1.1'
     gsonVersion = '2.8.2'
     glideVersion = '4.10.0'

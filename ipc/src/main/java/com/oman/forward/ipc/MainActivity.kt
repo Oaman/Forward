@@ -1,18 +1,18 @@
 package com.oman.forward.ipc
 
+import android.app.Activity
 import android.content.*
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.oman.common.Constants.Companion.IPC_RECEIVER_ACTION_ROMAN
 import com.oman.common.Constants.Companion.PACKAGE_NAME_FORWARD
 import com.oman.common.NumberToRomanProviderInstance
 import com.oman.forward.INumberToRoman
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
