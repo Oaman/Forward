@@ -11,6 +11,7 @@ import com.oman.common.Constants.Companion.IPC_RECEIVER_ACTION_ROMAN
 import com.oman.common.Constants.Companion.PACKAGE_NAME_FORWARD
 import com.oman.common.NumberToRomanProviderInstance
 import com.oman.forward.INumberToRoman
+import kotlin.concurrent.thread
 
 class MainActivity : Activity() {
 
@@ -47,11 +48,13 @@ class MainActivity : Activity() {
                 }
 
                 override fun onServiceConnected(name: ComponentName, service: IBinder) {
-                    val binder = INumberToRoman.Stub.asInterface(service)
-                    Log.i("aaa", "client: ${binder.numberToRoman(1234)}")
-                    service.linkToDeath({
-                        Log.i("aaa", "death: ")
-                    }, 0)
+                    thread {
+                        val binder = MyNumberToRoman.Stub.asInterface(service)
+                        Log.i("aaa", "client: ${binder.numberToRoman(1234)} ${Thread.currentThread().name}")
+                        service.linkToDeath({
+                            Log.i("aaa", "death: ")
+                        }, 0)
+                    }
                 }
 
             }, Context.BIND_AUTO_CREATE)
