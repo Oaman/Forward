@@ -1,4 +1,4 @@
-package com.oman.forward.study.jdk;
+package com.oman.lib.jdk;
 
 /**
  * @author:ZhouJiang

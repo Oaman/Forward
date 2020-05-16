@@ -1,4 +1,4 @@
-package com.oman.forward.study.generic;
+package com.oman.lib.generic;
 
 /**
  * @author:ZhouJiang
