@@ -43,8 +43,8 @@ class DashboardActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController, appbarConfiguration)
         binding.navigationView.setupWithNavController(navController)
-        replaceActivityInstrument(this)
-        replaceContextInstrument()
+//        replaceActivityInstrument(this)
+//        replaceContextInstrument()
 //        startActivity(Intent(this, TargetActivity::class.java))
         getSharedPreferences("first", Context.MODE_PRIVATE).modify {
             putString("name", "value")

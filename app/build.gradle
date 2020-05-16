@@ -72,5 +72,8 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxandroidVersion}"
     implementation "io.reactivex.rxjava2:rxjava:${rootProject.ext.rxjavaVersion}"
 
-    implementation project (':common')
+//    implementation "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
+//    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
+
+    implementation project(':common')
 }
