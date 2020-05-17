@@ -21,6 +21,8 @@
 
         <activity android:name="com.oman.forward.DetailActivity" />
         <activity android:name=".TestActivity" />
+        <activity android:name=".study.annotation.AActivity" />
+        <activity android:name=".study.annotation.BActivity" />
 
         <receiver
             android:name=".ipc.RomanReceiver"
