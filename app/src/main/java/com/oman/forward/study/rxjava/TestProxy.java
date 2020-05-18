@@ -29,7 +29,7 @@ public class TestProxy {
     public static void main(String[] args) throws NoSuchMethodException {
         IProduct mask = new FacialMask();
 
-        IProduct product = (IProduct) Proxy.newProxyInstance(FacialMask.class.getClassLoader(), new Class[]{IProduct.class}, new InvocationHandler() {
+        Object o = (IProduct) Proxy.newProxyInstance(FacialMask.class.getClassLoader(), new Class[]{IProduct.class}, new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 //                System.out.println(proxy);//这里相当于又调用了proxy.toString()方法，又会调用invoke
@@ -43,6 +43,8 @@ public class TestProxy {
                 return null;
             }
         });
+
+        IProduct product = (IProduct) o;
         product.price("hello");
         product.print("print");
         System.out.println("----------------");

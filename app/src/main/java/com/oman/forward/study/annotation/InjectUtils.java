@@ -6,7 +6,11 @@ import android.os.Parcelable;
 import android.text.TextUtils;
 import android.view.View;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.Arrays;
 
 /**
@@ -63,4 +67,41 @@ class InjectUtils {
             }
         }
     }
+
+    static void injectClick(Activity activity) {
+        Method[] methods = activity.getClass().getDeclaredMethods();
+        for (Method method : methods) {
+            Annotation[] annotations = method.getAnnotations();
+            for (Annotation annotation : annotations) {
+                Class<? extends Annotation> onClickClass = annotation.annotationType();//@OnClick({xx,xx}) |  interface OnClick
+                if (onClickClass.isAnnotationPresent(EventType.class)) {
+                    EventType eventType = onClickClass.getAnnotation(EventType.class);
+                    Class<?> listenerType = eventType.listenerType();
+                    String listenerSetter = eventType.listenerSetter();
+                    try {
+                        Method value = onClickClass.getDeclaredMethod("value");
+                        int[] viewIds = (int[]) value.invoke(annotation);
+
+                        method.setAccessible(true);
+                        InvocationHandler handler = new InvocationHandler() {
+                            @Override
+                            public Object invoke(Object proxy, Method method1, Object[] args) throws Throwable {
+                                return method.invoke(activity, args);//onClick.invoke(activity, view) 是通过View.performClick -> mOnClickListener.onClick(view)
+                            }
+                        };
+                        Object listenerProxy = Proxy.newProxyInstance(listenerType.getClassLoader(), new Class[]{listenerType}, handler);
+                        for (int id : viewIds) {
+                            View view = activity.findViewById(id);
+                            Method setter = view.getClass().getMethod(listenerSetter, listenerType);
+                            setter.invoke(view, listenerProxy);//setOnClickListener.invoke(view, onClickListener)
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+
+
 }
