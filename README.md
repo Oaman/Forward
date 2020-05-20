@@ -150,30 +150,50 @@ ___
 ___
 ### 面试题
 #### Java面试题
-- [线程的实现本质上有几种方式](https://blog.csdn.net/oman001/article/details/105020213)
-- [Java线程的生命周期](https://blog.csdn.net/oman001/article/details/105039294)
-- [wait/notify/notifyAll常见面试题解析](https://blog.csdn.net/oman001/article/details/105102761)
-- [synchronized关键字的几种使用方式比较](https://blog.csdn.net/oman001/article/details/105059069)
-- [volatile关键字的理解](https://blog.csdn.net/oman001/article/details/105020244)
-- [生产者消费者模式有哪几种常见的实现方式？](https://blog.csdn.net/oman001/article/details/105039303)
-- [Java集合框架](https://blog.csdn.net/oman001/article/details/104843676)
-- [HashMap数据结构](https://blog.csdn.net/oman001/article/details/104752421)
-- [ConcurrentHashMap的原理](https://mp.weixin.qq.com/s/i8US-ZyiCmVg2e6Wt1DaRw)
-- [类加载机制](https://blog.csdn.net/tonytfjing/article/details/47212291)
-- [JVM结构和垃圾回收机制](https://blog.csdn.net/oman001/article/details/104782849)
-- [I/O流](https://www.cnblogs.com/oubo/archive/2012/01/06/2394638.html)
-- 应用程序安装流程
-- [设计模式的原则和23种设计模式了解](https://blog.csdn.net/oman001/article/details/100176742)
-- [四种排序算法](https://blog.csdn.net/oman001/article/details/76261189)
+- 1 [Java泛型深度解析以及面试题?](https://blog.csdn.net/oman001/article/details/106033391)
+	- 什么是泛型？使用泛型的好处？
+	- 什么是泛型擦除机制？
+	- `List<Object>， List<?>， List<String>，List原始类型 `四者之间的区别？
+- 2 [Java注解的理解和应用场景?](https://blog.csdn.net/oman001/article/details/106041869)
+- 3 [线程的实现本质上有几种方式?](https://blog.csdn.net/oman001/article/details/105020213)
+- 4 [Java线程的生命周期](https://blog.csdn.net/oman001/article/details/105039294)
+- 5 [wait/notify/notifyAll常见面试题解析](https://blog.csdn.net/oman001/article/details/105102761)
+- 6 [synchronized关键字的几种使用方式比较](https://blog.csdn.net/oman001/article/details/105059069)
+- 7 [volatile关键字的理解](https://blog.csdn.net/oman001/article/details/105020244)
+- 8 锁分哪几类？
+	> ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200521000604448.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L29tYW4wMDE=,size_16,color_FFFFFF,t_70)
+- 9 CAS无锁编程的原理？有哪些问题？
+	>当前的处理器基本都支持CAS()的指令，只不过每个厂家所实现的算法并不一样，每一个CAS操作过程都包含三个运算符：一个内存地址V，一个期望的值A和一个新值B，操作的时候如果这个地址上存放的值等于这个期望的值A，则将地址上的值赋为新值B，否则不做任何操作。
+CAS的基本思路就是，如果这个地址上的值和期望的值相等，则给其赋予新值，否则不做任何事儿，但是要返回原值是多少。循环CAS就是在一个循环里不断的做cas操作，直到成功为止。
+问题：1 ABA问题 ； 2 开销问题，长期的自旋不成功就会对CPU有消耗；3 3 只能保证一个共享变量的原子操作
+- 10 ReentrantLock的实现原理。
+	> 线程可以重复进入任何一个它已经拥有的锁所同步着的代码块，synchronized、ReentrantLock都是可重入的锁。在实现上，就是线程每次获取锁时判定如果获得锁的线程是它自己时，简单将计数器累积即可，每 释放一次锁，进行计数器累减，直到计算器归零，表示线程已经彻底释放锁。底层则是利用了JUC中的AQS来实现的。
+- 11 AQS原理
+	> 它是用来构建锁或者其他同步组件的基础框架，比如ReentrantLock、ReentrantReadWriteLock和CountDownLatch就是基于AQS实现的。它使用了一个int成员变量表示同步状态，通过内置的FIFO队列来完成资源获取线程的排队工作。它是CLH队列锁的一种变体实现。它可以实现2种同步方式：独占式，共享式。
+AQS的主要使用方式是继承，子类通过继承AQS并实现它的抽象方法来管理同步状态，同步器的设计基于模板方法模式，所以如果要实现我们自己的同步工具类就需要覆盖其中几个可重写的方法，如tryAcquire、tryReleaseShared等等。
+这样设计的目的是同步组件（比如锁）是面向使用者的，它定义了使用者与同步组件交互的接口（比如可以允许两个线程并行访问），隐藏了实现细节；同步器面向的是锁的实现者，它简化了锁的实现方式，屏蔽了同步状态管理、线程的排队、等待与唤醒等底层操作。这样就很好地隔离了使用者和实现者所需关注的领域。
+在内部，AQS维护一个共享资源state，通过内置的FIFO来完成获取资源线程的排队工作。该队列由一个一个的Node结点组成，每个Node结点维护一个prev引用和next引用，分别指向自己的前驱和后继结点，构成一个双端双向链表。
+- 12 [生产者消费者模式有哪几种常见的实现方式？](https://blog.csdn.net/oman001/article/details/105039303)
+- 13 [Java集合框架](https://blog.csdn.net/oman001/article/details/104843676)
+- 14 [HashMap数据结构](https://blog.csdn.net/oman001/article/details/104752421)
+- 15 [ConcurrentHashMap的原理](https://mp.weixin.qq.com/s/i8US-ZyiCmVg2e6Wt1DaRw)
+- 16 [类加载机制](https://blog.csdn.net/tonytfjing/article/details/47212291)
+- 17 [JVM结构和垃圾回收机制](https://blog.csdn.net/oman001/article/details/104782849)
+- 18 [I/O流](https://www.cnblogs.com/oubo/archive/2012/01/06/2394638.html)
+- 19 应用程序安装流程
+- 20 [设计模式的原则和23种设计模式了解](https://blog.csdn.net/oman001/article/details/100176742)
+- 21 [四种排序算法](https://blog.csdn.net/oman001/article/details/76261189)
 ___
 #### Android面试题
-- Activity生命周期
-- Fragment生命周期]
-- Android中几种数据存储方式?
-- [Android跨进程通信的方式有哪些?](https://blog.csdn.net/oman001/article/details/104870483)
-- Android动画
-- [Handler机制](https://blog.csdn.net/oman001/article/details/103827430)
-- View的绘制流程]
-- [View的事件分发机制](https://blog.csdn.net/oman001/article/details/76206973)
-- [内存泄漏和性能优化](https://blog.csdn.net/oman001/article/details/78933642)
-- [Binder机制](http://liuwangshu.cn/tags/Binder%E5%8E%9F%E7%90%86/)
+- 1 Activity生命周期
+- 2 Fragment生命周期]
+- 3 Android中几种数据存储方式?
+- 4 [Android跨进程通信的方式有哪些?](https://blog.csdn.net/oman001/article/details/104870483)
+- 5 Android动画
+- 6 [Handler机制](https://blog.csdn.net/oman001/article/details/103827430)
+- 7 View的绘制流程]
+- 8 [View的事件分发机制](https://blog.csdn.net/oman001/article/details/76206973)
+- 9 [内存泄漏和性能优化](https://blog.csdn.net/oman001/article/details/78933642)
+- 10 [Binder机制](http://liuwangshu.cn/tags/Binder%E5%8E%9F%E7%90%86/)
+- 11 SystemServer的启动过程
+- 12 主线程的消息循环模型是什么？主线程为什么不会卡死？
