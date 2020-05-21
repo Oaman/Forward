@@ -2,6 +2,17 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.oman.plugin'
+
+auto {
+    userName USER_NAME
+    userPassword USER_PASSWORD
+    keyStorePath file("../.keystore/release.keystore").absolutePath
+    keyStorePassword RELEASE_STORE_PASSWORD
+    keyAlias RELEASE_KEY_ALIAS
+    keyAliasPassword RELEASE_KEY_PASSWORD
+    jarToolsPath 'D:\\sign\\360jiagubao_windows_64\\jiagu\\jiagu.jar'
+}
 
 android {
     compileSdkVersion rootProject.ext.compileSdk
