@@ -43,6 +43,7 @@ captures/
 #Intellij
 *.iml
 .idea/*
+!.idea/codeStyles/
 .externalNativeBuild
 
 #Keystore files
