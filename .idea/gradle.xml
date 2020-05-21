@@ -14,7 +14,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/ipc" />
-            <option value="$PROJECT_DIR$/lib" />
+            <option value="$PROJECT_DIR$/javalib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
