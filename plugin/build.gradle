@@ -1,0 +1,23 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation gradleApi()
+    implementation 'com.android.tools.build:gradle:3.6.3'
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
+
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        AutoJiaguPlugin(MavenPublication) {
+            from components.java
+            groupId 'com.oman'
+            artifactId 'jiagu'
+            version '1.0'
+        }
+    }
+}

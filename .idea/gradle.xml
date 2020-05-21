@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/ipc" />
             <option value="$PROJECT_DIR$/javalib" />
+            <option value="$PROJECT_DIR$/plugin" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
