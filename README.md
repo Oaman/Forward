@@ -113,6 +113,7 @@ ___
 	- 跨进程通信
 		- [Android跨进程(IPC)通信方式详解](https://blog.csdn.net/oman001/article/details/104870483)
 	- 其它篇
+		- [实战--Gradle插件化一键实现自动360加固](https://blog.csdn.net/oman001/article/details/106270399)
 		- [安卓扫描银行卡获取卡号信息](https://blog.csdn.net/oman001/article/details/77619976)
 		- [Android二维码识别技术](Android二维码识别技术)
 		- [Android O - java.lang.RuntimeException: An error occurred while executing doInBackground()](https://blog.csdn.net/oman001/article/details/103550495)
