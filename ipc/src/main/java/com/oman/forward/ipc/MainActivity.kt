@@ -10,7 +10,6 @@ import android.widget.Toast
 import com.oman.common.Constants.Companion.IPC_RECEIVER_ACTION_ROMAN
 import com.oman.common.Constants.Companion.PACKAGE_NAME_FORWARD
 import com.oman.common.NumberToRomanProviderInstance
-import com.oman.forward.INumberToRoman
 import kotlin.concurrent.thread
 
 class MainActivity : Activity() {
