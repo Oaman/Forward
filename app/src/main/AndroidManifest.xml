@@ -23,6 +23,7 @@
         <activity android:name=".TestActivity" />
         <activity android:name=".study.annotation.AActivity" />
         <activity android:name=".study.annotation.BActivity" />
+        <activity android:name=".study.rxjava.retrofit.RetrofitActivity" />
 
         <receiver
             android:name=".ipc.RomanReceiver"
