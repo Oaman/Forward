@@ -17,7 +17,9 @@ import java.util.regex.Pattern;
 
 import okhttp3.Headers;
 import okhttp3.MediaType;
+import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 /**
  * @author:ZhouJiang
@@ -131,6 +133,13 @@ public class TestProxy {
                 + method.getName(), cause);
     }
 }
+
+interface TestInterface {
+    @GET("home/homead/{login}/{name}")
+    @retrofit2.http.Headers({"Cache-Control: max-age=640000", "name:beijing", "content-type:application/json"})
+    Call<Object> getData(@Query(value = "cityId") String cityId, @Query(value = "age") String age);
+}
+
 
 interface IProduct {
     void price(String name);
