@@ -39,7 +39,7 @@ public class Test {
     private static void proxy() throws Exception {
         String name = Service.class.getName() + "$proxy";
         byte[] bytes = ProxyGenerator.generateProxyClass(name, new Class[]{Service.class});
-        FileOutputStream fos = new FileOutputStream("lib/" + name + ".class");
+        FileOutputStream fos = new FileOutputStream("javalib/" + name + ".class");
         fos.write(bytes);
         fos.close();
     }
@@ -47,7 +47,7 @@ public class Test {
     private static void proxy1() throws Exception {
         String name = OnClickListener.class.getName() + "$proxy1";
         byte[] bytes = ProxyGenerator.generateProxyClass(name, new Class[]{OnClickListener.class});
-        FileOutputStream fos = new FileOutputStream("lib/" + name + ".class");
+        FileOutputStream fos = new FileOutputStream("javalib/" + name + ".class");
         fos.write(bytes);
         fos.close();
     }

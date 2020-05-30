@@ -1,4 +1,4 @@
-package com.oman.lib.generic.type.gson;
+package com.oman.lib.gson;
 
 
 import com.google.gson.Gson;
