@@ -23,4 +23,7 @@
     <color name="action_bar_bg_pink">#f23369</color>
     <color name="action_bar_bg_yellow">#FBCD00</color>
     <color name="action_bar_bg_light_dark">#333333</color>
+    <color name="root_bg_color">#efeded</color>
+    <color name="top_bg_color">#323a45</color>
+    <color name="main_color">#24cfa2</color>
 </resources>

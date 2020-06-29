@@ -11,24 +11,27 @@
         android:roundIcon="@drawable/ic_like_on"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.oman.forward.DashboardActivity">
+        <activity android:name="com.oman.forward.wanandroid.register.RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.oman.forward.DashboardActivity" />
+
 
         <activity android:name="com.oman.forward.DetailActivity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".study.annotation.AActivity" />
         <activity android:name=".study.annotation.BActivity" />
         <activity android:name=".study.rxjava.retrofit.RetrofitActivity" />
+        <activity android:name=".wanandroid.login.LoginActivity" />
 
         <receiver
             android:name=".ipc.RomanReceiver"
-            android:permission="com.oman.forward.permission.ROMAN_RECEIVER"
-            android:exported="true" />
+            android:exported="true"
+            android:permission="com.oman.forward.permission.ROMAN_RECEIVER" />
 
         <service
             android:name=".ipc.NumberToRomanService"
