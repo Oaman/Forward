@@ -17,6 +17,7 @@ class LoginActivity : BaseActivity<LoginPresenter>(), LoginView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        userAccount.setText(intent.getStringExtra(KEY_USER_ACCOUNT))
     }
 
     override fun createPresenter(): LoginPresenter {

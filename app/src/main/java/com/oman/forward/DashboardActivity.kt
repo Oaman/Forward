@@ -1,5 +1,7 @@
 package com.oman.forward
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -25,6 +27,12 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navController: NavController
     private lateinit var appbarConfiguration: AppBarConfiguration
+
+    companion object {
+        fun startSelf(context: Context) {
+            context.startActivity(Intent(context, DashboardActivity::class.java))
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
