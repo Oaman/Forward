@@ -21,4 +21,9 @@ abstract class BaseActivity<P> : AppCompatActivity() where P : IBasePresenter {
     abstract fun createPresenter(): P
 
     abstract fun recycle()
+
+    companion object {
+        const val KEY_USER_ACCOUNT = "key_user_account"
+        const val KEY_USER_PASSWORD = "key_user_password"
+    }
 }

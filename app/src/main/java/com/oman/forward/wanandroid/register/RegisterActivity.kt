@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.edit
+import com.oman.forward.DashboardActivity
 import com.oman.forward.R
 import com.oman.forward.wanandroid.base.BaseActivity
 import com.oman.forward.wanandroid.login.LoginActivity
@@ -18,6 +20,9 @@ class RegisterActivity : BaseActivity<RegisterPresenter>(), RegisterView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        if (getSharedPreferences(PREF_NAME, 0).getBoolean(KEY_REGISTERED, false)) {
+            DashboardActivity.startSelf(this)
+        }
     }
 
     override fun createPresenter(): RegisterPresenter {
@@ -35,7 +40,14 @@ class RegisterActivity : BaseActivity<RegisterPresenter>(), RegisterView {
 
     override fun <T> registerSuccess(t: T) {
         toast("注册成功😀")
-        startActivity(Intent(this, LoginActivity::class.java))
+        getSharedPreferences(PREF_NAME, 0).edit {
+            putBoolean(KEY_REGISTERED, true)
+        }
+        //TODO just monitor
+        with(Intent(this, LoginActivity::class.java)) {
+            putExtra(KEY_USER_ACCOUNT, userAccount.text.trim().toString())
+            startActivity(this)
+        }
         finish()
     }
 
@@ -45,6 +57,11 @@ class RegisterActivity : BaseActivity<RegisterPresenter>(), RegisterView {
 
     override fun recycle() {
         //TODO do some recycle work
+    }
+
+    companion object {
+        const val PREF_NAME = "register"
+        const val KEY_REGISTERED = "key_registered"
     }
 }
 
