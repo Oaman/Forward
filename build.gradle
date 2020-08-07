@@ -8,7 +8,7 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.0'
+        classpath 'com.android.tools.build:gradle:4.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.oman:jiagu:1.0"
         // NOTE: Do not place your application dependencies here; they belong
@@ -40,7 +40,7 @@ ext {
     constraintLayoutVersion = '2.0.0-beta4'
     materialVersion = '1.0.0'
     eventBusVersion = '3.1.1'
-    kotlinVersion = '1.3.40'
+    kotlinVersion = '1.3.72'
     fragmentVersion = '1.2.4'
 
     navigationVersion = '2.2.1'
