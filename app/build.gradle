@@ -104,7 +104,7 @@ dependencies {
 
     testImplementation "org.ow2.asm:asm:7.1"
     testImplementation "org.ow2.asm:asm-commons:7.1"
-    testImplementation 'junit:junit:4.12'
+    testImplementation "junit:junit:${rootProject.ext.junitVersion}"
 
     implementation project(':common')
 }
