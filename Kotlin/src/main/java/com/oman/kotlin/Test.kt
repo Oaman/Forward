@@ -1,27 +1,35 @@
 package com.oman.kotlin
 
-import java.lang.Exception
+import kotlin.concurrent.thread
+
 
 fun main() {
-    val a = 1
-    println(a is Int)
-    println(a !is Int)
-    println(a as Int)
-    val b = a as Int
-    println(b)
-    println("-------")
-    var s: String? = null
-    println(s ?: "aa")
-//    s = s ?: "bb"
-    println(s)
-    age("1") {
-        it.toInt()
+    Button1().setOnClickListener {
+        println("kt onClick ${Thread.currentThread().name}")
     }
+    println(AA("123"))
 }
-typealias A = (String) -> Int
 
-fun age(str: String, a: A) = a(str)
 
-fun test() {
-    throw Exception("")
+val AA: (String) -> Int = { s ->
+    s.toInt()
+}
+
+fun b(s: String, block: (String) -> Int) {
+    println(block(s))
+}
+
+fun a(s: String): Int {
+    return s.toInt()
+}
+
+
+class Button1 {
+    fun setOnClickListener(block: () -> Unit) {
+        thread {
+            block()
+        }
+        println("kt main ${Thread.currentThread().name}")
+    }
+
 }
