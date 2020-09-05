@@ -11,7 +11,7 @@
         android:roundIcon="@drawable/ic_like_on"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.oman.forward.wanandroid.register.RegisterActivity">
+        <activity android:name="com.oman.forward.wanandroid.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,7 +26,7 @@
         <activity android:name=".study.annotation.AActivity" />
         <activity android:name=".study.annotation.BActivity" />
         <activity android:name=".study.rxjava.retrofit.RetrofitActivity" />
-        <activity android:name=".wanandroid.login.LoginActivity" />
+<!--        <activity android:name=".wanandroid.login.LoginActivity" />-->
 
         <receiver
             android:name=".ipc.RomanReceiver"
