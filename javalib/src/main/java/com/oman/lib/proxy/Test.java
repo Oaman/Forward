@@ -5,6 +5,8 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
+import javax.crypto.Cipher;
+
 import sun.misc.ProxyGenerator;
 
 /**
@@ -21,16 +23,23 @@ public class Test {
 
         // dynamic agent
         Service s2 = new BeautyService();
-        Object o = Proxy.newProxyInstance(Test.class.getClassLoader(), new Class[]{Service.class}, new InvocationHandler() {
+        OnClickListener listener = new MyButton();
+        Object o = Proxy.newProxyInstance(Test.class.getClassLoader(), new Class[]{Service.class, OnClickListener.class}, new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                method.invoke(s2, args);
+                if (method.getName().equals("service"))
+                    method.invoke(s2, args);
+                if (method.getName().equals("onClick"))
+                    method.invoke(listener, args);
                 return null;
             }
         });
 
         Service service = (Service) o;
         service.service(6);
+        OnClickListener click = (OnClickListener) o;
+        click.onClick("name");
+
 
         proxy();
         proxy1();
@@ -56,4 +65,12 @@ public class Test {
 
 interface OnClickListener {
     void onClick(String v);
+}
+
+class MyButton implements OnClickListener {
+
+    @Override
+    public void onClick(String v) {
+        System.out.println("print onclick:" + v);
+    }
 }
