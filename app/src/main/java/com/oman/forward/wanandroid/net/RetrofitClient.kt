@@ -23,9 +23,9 @@ class RetrofitClient(private val context: Context) {
 
     fun <T> create(clazz: Class<T>): T {
         val okHttpClient = OkHttpClient.Builder()
-                .connectTimeout(10000, TimeUnit.SECONDS)
-                .readTimeout(10000, TimeUnit.SECONDS)
-                .writeTimeout(10000, TimeUnit.SECONDS)
+                .connectTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(10, TimeUnit.SECONDS)
+                .writeTimeout(10, TimeUnit.SECONDS)
                 .build()
 
         return Retrofit.Builder()
