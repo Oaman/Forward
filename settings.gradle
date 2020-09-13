@@ -1,3 +1,4 @@
+include ':token'
 include ':Kotlin'
 include ':hook'
 include ':app'
