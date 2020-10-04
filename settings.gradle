@@ -1,3 +1,4 @@
+include ':dispatch'
 include ':token'
 include ':Kotlin'
 include ':hook'
