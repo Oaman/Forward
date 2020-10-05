@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/Kotlin" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/dispatch" />
             <option value="$PROJECT_DIR$/hook" />
             <option value="$PROJECT_DIR$/ipc" />
             <option value="$PROJECT_DIR$/javalib" />
