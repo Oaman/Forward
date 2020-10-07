@@ -2,6 +2,8 @@
 This project is for Study.
 ___
 ### Android学习路线
+
+
 - 初级工程师：阅读官方文档+练习官方Demo
 	- 技术要求
 		- 四大组件使用
@@ -64,6 +66,13 @@ ___
 ___
 ### 原创系列博客
 - Android框架层
+	- Android系统架构解析
+		- [Android系统架构解析与系统源码目录](https://blog.csdn.net/oman001/article/details/108907816)
+		- [Android系统启动流程（一） init进程启动过程解析](https://blog.csdn.net/oman001/article/details/108891909)
+		- [Android系统启动流程（二）Zygote进程启动过程解析](https://blog.csdn.net/oman001/article/details/108913276)
+		- [Android系统启动流程（三）SystemServer进程启动过程解析](https://blog.csdn.net/oman001/article/details/108914105)
+		- [Android系统启动流程（四）Launcher进程启动过程解析（附带面试题）](https://blog.csdn.net/oman001/article/details/108914711)
+		- [Android应用程序进程启动源码解析](https://blog.csdn.net/oman001/article/details/108926192)
 	- Android Jetpack组件
 		- [Android Jetpack架构组件（一）了解Android Jetpack](https://blog.csdn.net/oman001/article/details/104348915)
 		- [Android Jetpack架构组件（二）Lifecycle使用篇](https://blog.csdn.net/oman001/article/details/104360514)
@@ -98,14 +107,15 @@ ___
 		- [Git详细使用三部曲(二)-进阶篇](https://blog.csdn.net/oman001/article/details/83218423)
 	- 开源框架源码分析
 		- [EventBus源码分析](https://blog.csdn.net/oman001/article/details/102733835)
+		- [Retrofit如何实现自定义注解？](https://blog.csdn.net/oman001/article/details/108559087)
 	- 网络安全
 		- [HTTPS：用故事告诉你我的“前世今生”](https://blog.csdn.net/oman001/article/details/79046486)
 	- 性能优化
 		- [Android性能优化(一) —— 布局优化](https://blog.csdn.net/oman001/article/details/78925097)
 		- [Android性能优化(二)——内存泄漏](https://blog.csdn.net/oman001/article/details/78933642)
 	- 事件分发机制
-		- [Android事件分发机制源码解析(一)-View的事件分发机制](https://blog.csdn.net/oman001/article/details/76206973)
-		- [Android事件分发机制源码解析(二)-ViewGroup的事件分发机制](https://blog.csdn.net/oman001/article/details/76229434)
+		- [ViewGroup事件分发机制源码解析（一）View篇](https://blog.csdn.net/oman001/article/details/108922174)
+		- [ViewGroup事件分发机制源码解析（二）ViewGroup篇（含滑动冲突源码解析和解决）](https://blog.csdn.net/oman001/article/details/108921022)
 	- 自定义控件
 		- [自定义控件之水波纹效果](https://blog.csdn.net/oman001/article/details/78626804)
 	- 动画
@@ -122,6 +132,10 @@ ___
 		- [CoordinatorLayout和RecyclerView嵌套滑动冲突解决](https://blog.csdn.net/oman001/article/details/102790469)
 		- [Android有效避免程序OOM-图片压缩和三级缓存](https://blog.csdn.net/oman001/article/details/79060006)
 ___
+- Java枚举单例
+	 - [枚举单例，了解一下?](https://blog.csdn.net/oman001/article/details/108551089)
+- Java泛型
+	 - [你知道泛型擦除后是如何获取泛型信息的吗？](https://blog.csdn.net/oman001/article/details/108548656)
 - Java集合框架
  	- [Java集合框架](https://blog.csdn.net/oman001/article/details/104843676)
 	 - [HashMap数据结构](https://blog.csdn.net/oman001/article/details/104752421)
@@ -148,6 +162,9 @@ ___
 	- [Java数组-二分查找原理](https://blog.csdn.net/oman001/article/details/76268793)
 - 计算机基础
 	- [原码，反码，补码和进制的那些事](https://blog.csdn.net/oman001/article/details/104710312)
+___
+### Kotlin
+ - [Kotlin中的out和in](https://blog.csdn.net/oman001/article/details/108556934)
 ___
 ### 面试题
 #### Java面试题
@@ -184,6 +201,8 @@ AQS的主要使用方式是继承，子类通过继承AQS并实现它的抽象�
 - 19 应用程序安装流程
 - 20 [设计模式的原则和23种设计模式了解](https://blog.csdn.net/oman001/article/details/100176742)
 - 21 [四种排序算法](https://blog.csdn.net/oman001/article/details/76261189)
+- 22 [Integer面试题解析](https://blog.csdn.net/oman001/article/details/108547338)
+- 23 [分享几个面试题](https://blog.csdn.net/oman001/article/details/108558267)
 ___
 #### Android面试题
 - 1 Activity生命周期
