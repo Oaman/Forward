@@ -1,5 +1,6 @@
 package com.oman.forward.worker
 
+import android.annotation.TargetApi
 import android.content.Context
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -18,6 +19,7 @@ import java.util.concurrent.TimeUnit
 class CountWorker(context: Context, parameters: WorkerParameters)
     : Worker(context, parameters) {
 
+    @TargetApi(23)
     companion object {
         fun enqueue(context: ComponentActivity) {
             val constraints = Constraints.Builder()

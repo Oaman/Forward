@@ -77,13 +77,15 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
     implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation "org.greenrobot:eventbus:$eventBusVersion"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlinVersion"
+
     implementation "androidx.fragment:fragment-ktx:$rootProject.fragmentVersion"
 
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
 
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
 
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"
@@ -99,6 +101,8 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxandroidVersion}"
     implementation "io.reactivex.rxjava2:rxjava:${rootProject.ext.rxjavaVersion}"
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlinVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpLoggerVersion"
 //    implementation "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
 //    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
 
@@ -107,4 +111,5 @@ dependencies {
     testImplementation "junit:junit:${rootProject.ext.junitVersion}"
 
     implementation project(':common')
+
 }
