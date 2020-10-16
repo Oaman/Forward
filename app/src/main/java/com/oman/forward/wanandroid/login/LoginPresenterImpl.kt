@@ -8,7 +8,7 @@ import com.oman.forward.wanandroid.login.inner.LoginView
 class LoginPresenterImpl(private var loginView: LoginView?) : LoginPresenter, LoginListener {
     private val registerModule = LoginModuleImpl()
     override fun loginAction(context: Context, username: String, password: String) {
-        registerModule.loginAction(context, username, password, this)
+        registerModule.loginAction(username, password, this)
     }
 
     override fun unAttach() {

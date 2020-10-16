@@ -3,6 +3,8 @@ package com.oman.forward
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
@@ -47,6 +49,11 @@ class DashboardActivity : AppCompatActivity() {
         binding.navigationView.setupWithNavController(navController)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_search, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appbarConfiguration) || super.onSupportNavigateUp()
     }
@@ -57,5 +64,12 @@ class DashboardActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId==R.id.action_search) {
+            startActivity<SearchActivity>(this)
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

@@ -10,7 +10,7 @@ class RegisterPresenterImpl(private var registerView: RegisterView?) : RegisterP
     private val registerModule = RegisterModuleImpl()
 
     override fun registerAction(context: Context, username: String, password: String, rePassword: String) {
-        registerModule.registerAction(context, username, password, rePassword, this)
+        registerModule.registerAction(username, password, rePassword, this)
     }
 
     override fun unAttach() {

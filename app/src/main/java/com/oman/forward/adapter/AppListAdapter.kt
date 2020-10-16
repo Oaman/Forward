@@ -23,6 +23,7 @@ class AppListAdapter(private val callback: OnAppItemClickListener) : RecyclerVie
     }
 
     override fun onBindViewHolder(holder: AppListViewHolder, position: Int) {
+
         holder.binding.app = apps[position]
         holder.binding.callback = callback
     }

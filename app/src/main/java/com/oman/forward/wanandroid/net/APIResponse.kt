@@ -1,11 +1,10 @@
 package com.oman.forward.wanandroid.net
 
-import android.content.Context
 import com.oman.forward.wanandroid.entity.RegisterResponseWrapper
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 
-abstract class APIResponse<T>(val context: Context) : Observer<RegisterResponseWrapper<T>> {
+abstract class APIResponse<T> : Observer<RegisterResponseWrapper<T>> {
     override fun onComplete() {
 
     }

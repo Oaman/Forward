@@ -1,6 +1,5 @@
 package com.oman.forward.wanandroid.net
 
-import android.content.Context
 import com.oman.forward.wanandroid.register.RegisterModuleImpl
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -8,13 +7,13 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class RetrofitClient(private val context: Context) {
+class RetrofitClient {
 
     companion object {
         private var instance: RetrofitClient? = null
-        fun getInstance(context: Context): RetrofitClient {
+        fun getInstance(): RetrofitClient {
             return instance ?: synchronized(this) {
-                instance ?: RetrofitClient(context).also {
+                instance ?: RetrofitClient().also {
                     instance = it
                 }
             }

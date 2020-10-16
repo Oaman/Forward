@@ -1,6 +1,5 @@
 package com.oman.forward.wanandroid.login
 
-import android.content.Context
 import com.oman.forward.wanandroid.api.WanAndroidAPI
 import com.oman.forward.wanandroid.net.APIResponse
 import com.oman.forward.wanandroid.entity.LoginRegisterResponse
@@ -11,17 +10,16 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class LoginModuleImpl : LoginModule {
-    override fun loginAction(context: Context,
-                             username: String,
+    override fun loginAction(username: String,
                              password: String,
                              loginListener: LoginListener) {
 
-        RetrofitClient.getInstance(context)
+        RetrofitClient.getInstance()
                 .create(WanAndroidAPI::class.java)
                 .loginAction(username, password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : APIResponse<LoginRegisterResponse>(context) {
+                .subscribe(object : APIResponse<LoginRegisterResponse>() {
                     override fun success(t: LoginRegisterResponse) {
                         loginListener.loginSuccess(t)
                     }
