@@ -67,6 +67,7 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+
 }
 
 dependencies {
@@ -110,6 +111,6 @@ dependencies {
     testImplementation "org.ow2.asm:asm-commons:7.1"
     testImplementation "junit:junit:${rootProject.ext.junitVersion}"
 
-    implementation project(':common')
+    implementation project(':webview')
 
 }

@@ -12,5 +12,9 @@ class Constants {
 
         const val IPC_RECEIVER_ACTION_ROMAN = "com.oman.forward.ipc.ACTION_ROMAN"
         const val PACKAGE_NAME_IPC = "com.oman.forward.ipc"
+
+        const val KEY_WEB_TITLE = "title"
+        const val KEY_WEB_URL = "url"
+        const val KEY_WEB_IS_SHOW_ACTION_BAR = "is_show_action_bar"
     }
 }
