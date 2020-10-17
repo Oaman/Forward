@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <!--背景色-->
+    <attr name="c101" format="reference|color"/>
+    <attr name="c102" format="reference|color"/>
+    <!--分割线-->
+    <attr name="c103" format="reference|color"/>
+    <attr name="c104" format="reference|color"/>
+    <!--编辑框颜色-->
+    <attr name="c105" format="reference|color"/>
+    <attr name="c106" format="reference|color"/>
+    <attr name="c107" format="reference|color"/>
+    <attr name="c108" format="reference|color"/>
+    <attr name="c109" format="reference|color"/>
+    <attr name="c110" format="reference|color"/>
+    <attr name="c111" format="reference|color"/>
+    <attr name="c112" format="reference|color"/>
+    <attr name="c115" format="reference|color"/>
+    <attr name="c116" format="reference|color"/>
+    <attr name="c117" format="reference|color"/>
+    <attr name="c118" format="reference|color"/>
+    <!--  IPO背景  -->
+    <attr name="c119" format="reference|color"/>
+
+    <!--涨跌-->
+    <attr name="c201" format="reference|color"/>
+    <attr name="c202" format="reference|color"/>
+    <attr name="c203" format="reference|color"/>
+    <attr name="c204" format="reference|color"/>
+    <attr name="c205" format="reference|color"/>
+    <attr name="c206" format="reference|color"/>
+    <attr name="c207" format="reference|color"/>
+
+
+    <attr name="c208" format="reference|color"/>
+    <attr name="c209" format="reference|color"/>
+    <!--字体-->
+    <attr name="c301" format="reference|color"/>
+    <attr name="c302" format="reference|color"/>
+
+    <attr name="c303" format="reference|color"/>
+    <attr name="c304" format="reference|color"/>
+    <attr name="c305" format="reference|color"/>
+    <attr name="c306" format="reference|color"/>
+    <attr name="c307" format="reference|color"/>
+    <attr name="c308" format="reference|color"/>
+    <attr name="c309" format="reference|color"/>
+    <attr name="c312" format="reference|color"/>
+    <!--主题按钮-->
+    <attr name="c401" format="reference|color"/>
+    <attr name="c402" format="reference|color"/>
+    <attr name="c403" format="reference|color"/>
+
+    <attr name="c406" format="reference|color"/>
+    <attr name="c407" format="reference|color"/>
+    <attr name="c408" format="reference|color"/>
+    <attr name="c409" format="reference|color"/>
+    <attr name="c410" format="reference|color"/>
+    <attr name="c413" format="reference|color"/>
+
+    <!--图表-->
+    <attr name="c501" format="reference|color"/>
+    <attr name="c502" format="reference|color"/>
+    <attr name="c503" format="reference|color"/>
+    <attr name="c504" format="reference|color"/>
+    <attr name="c505" format="reference|color"/>
+    <attr name="c506" format="reference|color"/>
+    <attr name="c507" format="reference|color"/>
+    <attr name="c508" format="reference|color"/>
+    <attr name="c509" format="reference|color"/>
+    <!--资金-->
+    <attr name="c601" format="reference|color"/>
+    <attr name="c602" format="reference|color"/>
+    <attr name="c603" format="reference|color"/>
+    <attr name="c604" format="reference|color"/>
+    <attr name="c605" format="reference|color"/>
+    <attr name="c606" format="reference|color"/>
+    <attr name="c607" format="reference|color"/>
+    <attr name="c608" format="reference|color"/>
+    <attr name="c609" format="reference|color"/>
+    <!--分析师推荐-->
+    <attr name="c610" format="reference|color"/>
+    <attr name="c611" format="reference|color"/>
+    <attr name="c612" format="reference|color"/>
+    <!--基金概况-->
+    <attr name="c613" format="reference|color"/>
+    <attr name="c614" format="reference|color"/>
+    <attr name="c615" format="reference|color"/>
+    <attr name="c616" format="reference|color"/>
+    <attr name="c617" format="reference|color"/>
+    <attr name="c618" format="reference|color"/>
+    <attr name="c619" format="reference|color"/>
+    <attr name="c620" format="reference|color"/>
+    <attr name="c621" format="reference|color"/>
+    <attr name="c622" format="reference|color"/>
+    <attr name="c623" format="reference|color"/>
+    <attr name="c626" format="reference|color"/>
+    <attr name="c627" format="reference|color"/>
+    <attr name="c628" format="reference|color"/>
+    <attr name="c629" format="reference|color"/>
+    <attr name="c630" format="reference|color"/>
+    <attr name="c632" format="reference|color"/>
+    <attr name="c633" format="reference|color"/>
+
+    <!--买卖盘-->
+    <attr name="c701" format="reference|color"/>
+    <attr name="c702" format="reference|color"/>
+    <attr name="c703" format="reference|color"/>
+    <attr name="c704" format="reference|color"/>
+    <attr name="c705" format="reference|color"/> <!--item_background_press-->
+    <attr name="c706" format="reference|color"/> <!--item_background_selected-->
+
+    <attr name="c901" format="reference|color"/>
+    <attr name="c902" format="reference|color"/>
+    <attr name="c903" format="reference|color"/>
+    <attr name="c904" format="reference|color"/>
+    <attr name="c905" format="reference|color"/>
+</resources>

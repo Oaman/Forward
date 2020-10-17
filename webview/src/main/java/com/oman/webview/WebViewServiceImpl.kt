@@ -1,12 +1,13 @@
 package com.oman.webview
 
 import android.content.Context
-import android.content.Intent
+import androidx.fragment.app.Fragment
 import com.google.auto.service.AutoService
 import com.oman.common.Constants.Companion.KEY_WEB_IS_SHOW_ACTION_BAR
 import com.oman.common.Constants.Companion.KEY_WEB_TITLE
 import com.oman.common.Constants.Companion.KEY_WEB_URL
 import com.oman.common.autoservice.IWebViewService
+import com.oman.common.startActivity
 
 @AutoService(IWebViewService::class)
 class WebViewServiceImpl : IWebViewService {
@@ -17,10 +18,8 @@ class WebViewServiceImpl : IWebViewService {
             putExtra(KEY_WEB_IS_SHOW_ACTION_BAR, showToolbar)
         }
     }
-}
 
-inline fun <reified T> startActivity(context: Context, block: Intent.() -> Unit) {
-    val intent = Intent(context, T::class.java)
-    intent.block()
-    context.startActivity(intent)
+    override fun getWebViewFragment(url: String, canRefresh: Boolean): Fragment {
+        return WebViewFragment.getInstance(url, canRefresh)
+    }
 }

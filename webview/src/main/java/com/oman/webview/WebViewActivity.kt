@@ -10,6 +10,10 @@ import com.oman.common.Constants.Companion.KEY_WEB_TITLE
 import com.oman.common.Constants.Companion.KEY_WEB_URL
 import kotlinx.android.synthetic.main.activity_webview.*
 
+
+/**
+ *  https://mp.weixin.qq.com/s/5Hs9Bg93IbY2uRUMeIqAJQ
+ */
 class WebViewActivity : AppCompatActivity() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,12 +21,16 @@ class WebViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_webview)
 
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        webView.settings.javaScriptEnabled = true
-        webView.loadUrl(intent.getStringExtra(KEY_WEB_URL))
+        supportActionBar?.let {
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setDisplayShowHomeEnabled(true)
+        }
         toolbar.visibility = if (intent.getBooleanExtra(KEY_WEB_IS_SHOW_ACTION_BAR, false)) View.VISIBLE else View.GONE
         toolbar.title = intent.getStringExtra(KEY_WEB_TITLE)
+
+        val transaction = supportFragmentManager.beginTransaction()
+        val fragment = WebViewFragment.getInstance(intent.getStringExtra(KEY_WEB_URL)!!, true)
+        transaction.replace(R.id.fragmentContainer, fragment).commit()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -30,5 +38,9 @@ class WebViewActivity : AppCompatActivity() {
             finish()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun updateTitle(title:String) {
+        toolbar.title = title
     }
 }

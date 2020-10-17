@@ -55,6 +55,9 @@ ext {
     rxjavaVersion = '2.2.16'
     okhttpLoggerVersion = '3.9.0'
     autoServiceVersion = '1.0-rc7'
+    loadSirVersion = '1.3.8'
+    lottieVersion = '2.8.0'
+    SmartRefreshLayoutVersion = '1.1.0-alpha-7'
 
     butterKnifeVersion = '10.2.1'
     junitVersion = '4.13'
