@@ -11,14 +11,14 @@
         android:roundIcon="@drawable/ic_like_on"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.oman.forward.wanandroid.login.LoginActivity">
+        <activity android:name=".DashboardActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.oman.forward.DashboardActivity" />
+        <activity android:name="com.oman.forward.wanandroid.login.LoginActivity" />
 
 
         <activity android:name="com.oman.forward.DetailActivity" />
@@ -26,7 +26,7 @@
         <activity android:name=".study.annotation.AActivity" />
         <activity android:name=".study.annotation.BActivity" />
         <activity android:name=".study.rxjava.retrofit.RetrofitActivity" />
-<!--        <activity android:name=".wanandroid.login.LoginActivity" />-->
+        <activity android:name=".SearchActivity" />
 
         <receiver
             android:name=".ipc.RomanReceiver"
