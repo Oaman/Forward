@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.oman.webview">
+
+    <!--  http的话需要开启usesCleartextTraffic为true，另开一个页面  -->
+    <application android:usesCleartextTraffic="true">
+        <activity
+            android:name=".WebViewActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    </application>
+</manifest>

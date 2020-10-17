@@ -45,5 +45,6 @@ class SearchActivity : AppCompatActivity() {
                 it.exceptionOrNull()?.printStackTrace()
             }
         })
+        viewModel.key.postValue("JetPack")
     }
 }

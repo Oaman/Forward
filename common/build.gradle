@@ -29,4 +29,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$rootProject.androidxAppcompatVersion"
     implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
+    api project(':base')
 }

@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Kotlin" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/base" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/dispatch" />
             <option value="$PROJECT_DIR$/hook" />
@@ -20,6 +21,7 @@
             <option value="$PROJECT_DIR$/javalib" />
             <option value="$PROJECT_DIR$/plugin" />
             <option value="$PROJECT_DIR$/token" />
+            <option value="$PROJECT_DIR$/webview" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
