@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">core</string>
+    <string name="empty"> </string>
+
+    <string name="empty_tips_null">暂无数据</string>
+    <string name="empty_tips_netword">请检查你的网络连接</string>
+    <string name="empty_tips_btn">重试</string>
+    <string name="no_more_data">没有更多了</string>
+    <string name="activity_empty">Activity(empty)</string>
+    <string name="activity_placeholder">Activity(placeholder)</string>
+    <string name="activity_with_convertor">Activity with Convertor</string>
+    <string name="single_fragment_custom">single Fragment(custom)</string>
+    <string name="multiple_fragment">multiple Fragment</string>
+    <string name="multiple_fragment_viewpager">multiple Fragment+ViewPager</string>
+    <string name="view_timeout">View(timeout)</string>
+    <string name="animat_callback">Animat Callback</string>
+    <string name="keep_title_bar_in_fragment">keep title bar in Fragment</string>
+    <string name="loadsir">LoadSir</string>
+    <string name="success">Success</string>
+    <string name="keep_title_bar">keep title bar</string>
+    <string name="fine_no_data">fine, no data.</string>
+    <string name="click_me_to_retry">click me to retry!</string>
+    <string name="best_practices">best practices</string>
+    <string name="default_loadsir_callback">default LoadSir Callback</string>
+    <string name="keep_title_bar_in_activity">keep title bar in Activity</string>
+    <string name="login">登录</string>
+    <string name="hint_password">密码</string>
+    <string name="hint_email">邮箱</string>
+    <string name="register">注册</string>
+    <string name="forget_password">忘记密码</string>
+</resources>
