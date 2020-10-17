@@ -31,6 +31,7 @@ dependencies {
     api "com.kingja.loadsir:loadsir:${rootProject.loadSirVersion}"
     implementation "com.airbnb.android:lottie:${rootProject.lottieVersion}"
     api "com.scwang.smartrefresh:SmartRefreshLayout:${rootProject.SmartRefreshLayoutVersion}"
+    api "com.google.code.gson:gson:$rootProject.gsonVersion"
 }
 repositories {
     mavenCentral()

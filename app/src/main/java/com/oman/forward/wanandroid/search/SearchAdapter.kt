@@ -22,7 +22,8 @@ class SearchAdapter(val context: Context, var data: List<Article>) : RecyclerVie
         holder.title.text = data[position].title
         holder.itemView.setOnClickListener {
             val service = MyServiceLoader.load(IWebViewService::class.java)
-            service?.startWebView(context, data[position].link, data[position].title, true)
+//            service?.startWebView(context, data[position].link, data[position].title, true)
+            service?.startDemoHtml(context)
         }
     }
 

@@ -14,17 +14,19 @@ import com.oman.base.loadsir.ErrorCallback
 import com.oman.base.loadsir.LoadingCallback
 import com.oman.common.Constants.Companion.KEY_CAN_REFRESH
 import com.oman.common.Constants.Companion.KEY_WEB_URL
+import com.oman.webview.webviewprocess.BaseWebView
+import com.oman.webview.webviewprocess.webviewchromeclient.MyWebViewChromeClient
+import com.oman.webview.webviewprocess.webviewclient.MyWebViewClient
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
-import kotlinx.android.synthetic.main.fragment_webview.*
 
 class WebViewFragment : Fragment(), OnRefreshListener, IWebViewCallback {
 
     private var canRefresh: Boolean = false
     private lateinit var loadService: LoadService<*>
     private var hasError: Boolean = false
-    private var webView: WebView? = null
+    private var webView: BaseWebView? = null
     private var smartRefreshLayout: SmartRefreshLayout? = null
 
     companion object {
@@ -43,7 +45,9 @@ class WebViewFragment : Fragment(), OnRefreshListener, IWebViewCallback {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_webview, container, false)
-        webView = rootView.findViewById<WebView>(R.id.webView)
+        webView = rootView.findViewById(R.id.webView)
+
+        webView?.registerWebViewCallBack(this)
         smartRefreshLayout = rootView.findViewById(R.id.smartRefreshLayout)
 
         webView?.settings?.javaScriptEnabled = true
@@ -52,9 +56,6 @@ class WebViewFragment : Fragment(), OnRefreshListener, IWebViewCallback {
             loadService.showCallback(LoadingCallback::class.java)
             webView?.reload()
         }
-
-        webView?.webViewClient = MyWebViewClient(this)
-        webView?.webChromeClient = MyWebViewChromeClient(this)
         smartRefreshLayout?.setOnRefreshListener(this)
         smartRefreshLayout?.isEnableRefresh = canRefresh
         smartRefreshLayout?.isEnableLoadMore = false
@@ -88,8 +89,11 @@ class WebViewFragment : Fragment(), OnRefreshListener, IWebViewCallback {
     }
 
     override fun updateTitle(title: String) {
-        if (activity is WebViewActivity) {
-            (activity as WebViewActivity).updateTitle(title)
-        }
+        callback?.updateTitle(title)
+    }
+
+    private var callback: UpdateTitleCallback? = null
+    fun setUpdateTitleCallback(updateTitleCallback: UpdateTitleCallback) {
+        callback = updateTitleCallback
     }
 }
