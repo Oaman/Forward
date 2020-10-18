@@ -106,6 +106,9 @@ dependencies {
 //    implementation "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
 //    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
 
+    implementation "com.google.auto.service:auto-service:${rootProject.autoServiceVersion}"
+    kapt "com.google.auto.service:auto-service:${rootProject.autoServiceVersion}"
+
     testImplementation "org.ow2.asm:asm:7.1"
     testImplementation "org.ow2.asm:asm-commons:7.1"
     testImplementation "junit:junit:${rootProject.ext.junitVersion}"

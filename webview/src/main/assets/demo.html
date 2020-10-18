@@ -17,9 +17,15 @@
 		</style>
     <script>
 			function callToast() {
-				console.log("callToast a.");
+				console.log("callToast .");
 				toastjs.nativeInvoke("showToast", {
 					message: "this is a message from html."
+				});
+			}
+			function openActivity() {
+				console.log("openActivity .");
+				toastjs.nativeInvoke("openActivity", {
+					className: "com.oman.forward.TestActivity"
 				});
 			}
 		</script>
@@ -27,5 +33,6 @@
 </head>
 <body style="height: 100%;">
 <div class="item" style="font-size: 20px; color: #ffffff" onclick="callToast()">调用: showToast</div>
+<div class="item" style="font-size: 20px; color: #ffffff" onclick="openActivity()">调用: 打开Activity</div>
 </body>
 </html>

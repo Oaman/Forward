@@ -8,7 +8,8 @@
     <application android:usesCleartextTraffic="true">
         <activity
             android:name=".WebViewActivity"
-            android:process=":remote"
+            android:process=":webview"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <service android:name=".mainprocess.MainProcessCommandService" />
     </application>
 </manifest>

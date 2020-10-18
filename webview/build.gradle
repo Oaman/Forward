@@ -37,5 +37,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlinVersion"
     implementation "com.google.auto.service:auto-service:${rootProject.autoServiceVersion}"
     kapt "com.google.auto.service:auto-service:${rootProject.autoServiceVersion}"
+
     api project(':common')
 }
