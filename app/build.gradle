@@ -92,7 +92,6 @@ dependencies {
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"
 
     implementation "androidx.work:work-runtime-ktx:$rootProject.workVersion"
-    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
 
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
 
@@ -106,6 +105,9 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpLoggerVersion"
 //    implementation "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
 //    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
+
+    implementation "com.google.auto.service:auto-service:${rootProject.autoServiceVersion}"
+    kapt "com.google.auto.service:auto-service:${rootProject.autoServiceVersion}"
 
     testImplementation "org.ow2.asm:asm:7.1"
     testImplementation "org.ow2.asm:asm-commons:7.1"

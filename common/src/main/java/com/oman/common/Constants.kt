@@ -17,5 +17,6 @@ class Constants {
         const val KEY_WEB_URL = "url"
         const val KEY_CAN_REFRESH = "refresh"
         const val KEY_WEB_IS_SHOW_ACTION_BAR = "is_show_action_bar"
+        const val ANDROID_ASSET_URI = "file:///android_asset/"
     }
 }

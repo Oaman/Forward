@@ -2,10 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.oman.webview">
 
-    <!--  http的话需要开启usesCleartextTraffic为true，另开一个页面  -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!--  after 7.0, if you want to use http, should set this attr, and it will open a new window  -->
     <application android:usesCleartextTraffic="true">
         <activity
             android:name=".WebViewActivity"
+            android:process=":webview"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <service android:name=".mainprocess.MainProcessCommandService" />
     </application>
 </manifest>

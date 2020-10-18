@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="format-detection" content="telephone = no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <style type="text/css">
+			.item {
+				padding: 20px;
+				max-width: 600px;
+				margin: 0 auto;
+				text-align: center;
+				background-color: #999999;
+				margin-top: 20px;
+			}
+		</style>
+    <script>
+			function callToast() {
+				console.log("callToast .");
+				toastjs.nativeInvoke("showToast", {
+					message: "this is a message from html."
+				});
+			}
+			function openActivity() {
+				console.log("openActivity .");
+				toastjs.nativeInvoke("openActivity", {
+					className: "com.oman.forward.TestActivity"
+				});
+			}
+		</script>
+    <script src="js/toastjs.js" charset="utf-8"></script>
+</head>
+<body style="height: 100%;">
+<div class="item" style="font-size: 20px; color: #ffffff" onclick="callToast()">调用: showToast</div>
+<div class="item" style="font-size: 20px; color: #ffffff" onclick="openActivity()">调用: 打开Activity</div>
+</body>
+</html>

@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_webview.*
 /**
  *  https://mp.weixin.qq.com/s/5Hs9Bg93IbY2uRUMeIqAJQ
  */
-class WebViewActivity : AppCompatActivity() {
+class WebViewActivity : AppCompatActivity(), UpdateTitleCallback {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +30,7 @@ class WebViewActivity : AppCompatActivity() {
 
         val transaction = supportFragmentManager.beginTransaction()
         val fragment = WebViewFragment.getInstance(intent.getStringExtra(KEY_WEB_URL)!!, true)
+        (fragment as WebViewFragment).setUpdateTitleCallback(this)
         transaction.replace(R.id.fragmentContainer, fragment).commit()
     }
 
@@ -40,7 +41,12 @@ class WebViewActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun updateTitle(title:String) {
+    @Override
+    override fun updateTitle(title: String) {
         toolbar.title = title
     }
+}
+
+interface UpdateTitleCallback {
+    fun updateTitle(title: String)
 }

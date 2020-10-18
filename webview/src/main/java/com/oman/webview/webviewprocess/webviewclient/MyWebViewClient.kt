@@ -1,10 +1,11 @@
-package com.oman.webview
+package com.oman.webview.webviewprocess.webviewclient
 
 import android.graphics.Bitmap
 import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import com.oman.webview.IWebViewCallback
 
 class MyWebViewClient(val callback: IWebViewCallback) : WebViewClient() {
 
