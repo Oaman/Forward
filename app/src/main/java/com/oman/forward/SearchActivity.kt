@@ -36,7 +36,7 @@ class SearchActivity : AppCompatActivity() {
             viewModel.key.postValue(it.toString())
         }
 
-        viewModel.searchResult.observe(this, Observer {
+        viewModel.searchResult.observe(this, {
             val result = it.getOrNull()
             if (result != null) {
                 adapter.setList(result.data.datas)

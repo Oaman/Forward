@@ -4,6 +4,7 @@ import com.oman.forward.wanandroid.entity.LoginRegisterResponse
 import com.oman.forward.wanandroid.entity.RegisterResponseWrapper
 import com.oman.forward.wanandroid.entity.SearchResultResponse
 import io.reactivex.Observable
+import retrofit2.Call
 import retrofit2.http.*
 
 interface WanAndroidAPI {
@@ -25,4 +26,7 @@ interface WanAndroidAPI {
 
     @POST("/article/query/{pageNum}/json")
     suspend fun getSearchList(@Path("pageNum") pageNum: Int, @Query("k") key: String): RegisterResponseWrapper<SearchResultResponse>
+
+    @POST("/article/query/{pageNum}/json")
+    fun getSearchListCall(@Path("pageNum") pageNum: Int, @Query("k") key: String): Call<RegisterResponseWrapper<SearchResultResponse>>
 }
