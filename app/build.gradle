@@ -114,5 +114,7 @@ dependencies {
     testImplementation "junit:junit:${rootProject.ext.junitVersion}"
 
     implementation project(':webview')
-
+    implementation "com.bennyhuo.kotlin:coroutines-android-autodisposable:1.0"
+    implementation 'com.uber.autodispose:autodispose-android-archcomponents:1.4.0'
+    implementation "com.uber.autodispose:autodispose:1.4.0"
 }

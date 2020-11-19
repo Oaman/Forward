@@ -1,35 +1,44 @@
 package com.oman.kotlin
 
-import kotlin.concurrent.thread
+import kotlinx.coroutines.*
 
 
-fun main() {
-    Button1().setOnClickListener {
-        println("kt onClick ${Thread.currentThread().name}")
-    }
-    println(AA("123"))
-}
+//val callback = {
+//    println("C")
+//}
+//val talk = {
+//    println("D")
+//    callback()
+//}
 
-
-val AA: (String) -> Int = { s ->
-    s.toInt()
-}
-
-fun b(s: String, block: (String) -> Int) {
-    println(block(s))
-}
-
-fun a(s: String): Int {
-    return s.toInt()
-}
-
-
-class Button1 {
-    fun setOnClickListener(block: () -> Unit) {
-        thread {
-            block()
+suspend fun main() {
+    runBlocking {
+        launch(Dispatchers.Default) {
+            println("aaa ${Thread.currentThread().name}")
+            delay(2000)
+            println("bbb ${Thread.currentThread().name}")
         }
-        println("kt main ${Thread.currentThread().name}")
+        launch(Dispatchers.IO) {
+            println("ccc ${Thread.currentThread().name}")
+            delay(2000)
+            println("ddd ${Thread.currentThread().name}")
+        }
     }
-
+    println("finish ${Thread.currentThread().name}")
 }
+
+//inline fun get(block: (String) -> Unit) {
+//    block.invoke("data")
+//}
+
+//val continuation = suspend {
+//    println("in coroutine")
+//    4
+//}.startCoroutine(object : Continuation<Int> {
+//    override val context: CoroutineContext
+//        get() = EmptyCoroutineContext
+//
+//    override fun resumeWith(result: Result<Int>) {
+//        println("end ${result.getOrNull()}")
+//    }
+//})
