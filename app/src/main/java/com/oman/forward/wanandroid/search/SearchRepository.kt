@@ -33,14 +33,14 @@ object SearchRepository {
                 emit(result)
             }
 
-    private fun <T> create(clazz: Class<T>) = RetrofitClient.getInstance().create(clazz)
+    fun <T> create(clazz: Class<T>) = RetrofitClient.getInstance().create(clazz)
 
     private suspend inline fun <T> Call<T>.await(): T {
         return suspendCoroutine<T> {
             enqueue(object : Callback<T> {
                 override fun onResponse(call: Call<T>, response: Response<T>) {
                     val body = response.body()
-                    if (body != null) it.resume(body)
+                    if (body != null) it.resumeWith(Result.success(body))
                     else it.resumeWithException(RuntimeException("response body is null"))
                 }
 
