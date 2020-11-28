@@ -21,7 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void hookActivityThreadInstrumentation(View view) {
         HookUtils.hookActivityThreadInstrument();
-        getApplicationContext().startActivity(new Intent(this, RegisterActivity.class));
+        Intent intent = new Intent(this, RegisterActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplicationContext().startActivity(intent);
     }
 
     public void hookAMS(View view) {

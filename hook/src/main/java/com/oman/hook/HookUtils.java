@@ -103,15 +103,7 @@ public class HookUtils {
 
     public static void hookAMS() {
         try {
-            //针对7.0以下和8.0以上分别处理
-            Field singletonField;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                Class<?> classActivityManagerNative = Class.forName("android.app.ActivityManager");
-                singletonField = classActivityManagerNative.getDeclaredField("IActivityManagerSingleton");
-            } else {
-                Class<?> classActivityManager = Class.forName("android.app.ActivityManagerNative");
-                singletonField = classActivityManager.getDeclaredField("gDefault");
-            }
+            Field singletonField = getActivityManagerSingletonField();
             singletonField.setAccessible(true);
             Object singleton = singletonField.get(null);
 
@@ -120,7 +112,7 @@ public class HookUtils {
             mInstanceField.setAccessible(true);
             Object activityManager = mInstanceField.get(singleton);
 
-            Class<?> classIActivityManager = Class.forName("android.app.IActivityManager");
+            Class<?> classIActivityManager = getActivityManagerClazz();
             Object proxyInstance = Proxy.newProxyInstance(classSingleton.getClassLoader(), new Class[]{classIActivityManager}, new InvocationHandler() {
                 @Override
                 public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
@@ -129,7 +121,7 @@ public class HookUtils {
                             Log.i("aaa", "AMS invoke:" + o);
                         }
                     }
-                    return method.invoke(activityManager, args);
+                    return method.invoke(activityManager, args);//此行是为了不改变代码原有的执行流程，相当于前面的代码是加了一个监控
                 }
             });
             mInstanceField.set(singleton, proxyInstance);
@@ -141,14 +133,7 @@ public class HookUtils {
 
     public static void hookAMSNoRegister() {
         try {
-            Field singletonField;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                Class<?> classActivityManagerNative = Class.forName("android.app.ActivityManager");
-                singletonField = classActivityManagerNative.getDeclaredField("IActivityManagerSingleton");
-            } else {
-                Class<?> classActivityManager = Class.forName("android.app.ActivityManagerNative");
-                singletonField = classActivityManager.getDeclaredField("gDefault");
-            }
+            Field singletonField = getActivityManagerSingletonField();
             singletonField.setAccessible(true);
             Object singleton = singletonField.get(null);
 
@@ -157,9 +142,9 @@ public class HookUtils {
             mInstanceField.setAccessible(true);
             Object activityManager = mInstanceField.get(singleton);
 
-            Class<?> classIActivityManager = Class.forName("android.app.IActivityManager");
-            Object proxyInstance = Proxy.newProxyInstance(classSingleton.getClassLoader(), new Class[]{classIActivityManager},
-                    new NoRegisterInvocationHandler(activityManager));
+            Class<?> classIActivityManager = getActivityManagerClazz();
+            Object proxyInstance = Proxy.newProxyInstance(classSingleton.getClassLoader(),
+                    new Class[]{classIActivityManager}, new NoRegisterInvocationHandler(activityManager));
             mInstanceField.set(singleton, proxyInstance);
         } catch (Exception e) {
             Log.i("aaa", "exception--hookAMS:" + e);
@@ -168,6 +153,7 @@ public class HookUtils {
     }
 
     private static class NoRegisterInvocationHandler implements InvocationHandler {
+
         private Object mObject;
 
         public NoRegisterInvocationHandler(Object mObject) {
@@ -195,11 +181,16 @@ public class HookUtils {
             }
             return method.invoke(mObject, args);
         }
-    }
 
+
+    }
 
     public static void hookH() {
         try {
+            /**
+             * 找到intent对象，替换为插件的intent：hook Handler -> 替换系统Callback就能得到msg, 就能获取intent
+             * 1
+             */
             Class<?> classActivityThread = Class.forName("android.app.ActivityThread");
             //获取currentActivityThread
             Field sCurrentActivityThreadField = classActivityThread.getDeclaredField("sCurrentActivityThread");
@@ -222,6 +213,7 @@ public class HookUtils {
     }
 
     private static class NoRegisterActivityHandler implements Handler.Callback {
+
         private Handler mHandler;
 
         public NoRegisterActivityHandler(Handler mHandler) {
@@ -239,18 +231,17 @@ public class HookUtils {
                 case 100:
                     handleLaunchActivity(msg);
                     break;
-                //EXECUTE_TRANSACTION = 159
+                //android 9.0做了大的重构  使用状态模式 EXECUTE_TRANSACTION = 159
                 case 159:
                     handleActivity(msg);
                     break;//EXECUTE_TRANSACTION
             }
-            mHandler.handleMessage(msg);
-            return true;
+            return false;
         }
 
         private void handleLaunchActivity(Message msg) {
             try {
-                Object o = msg.obj;
+                Object o = msg.obj;//ActivityClientRecord
                 //获取真实的想要启动的没有注册的intent, 用其替换原来的intent, 就是把替身恢复成真身
                 Field intentField = o.getClass().getDeclaredField("intent");
                 intentField.setAccessible(true);
@@ -265,12 +256,13 @@ public class HookUtils {
 
         private void handleActivity(Message msg) {
             try {
-                Object obj = msg.obj;
+                Object obj = msg.obj;// ClientTransaction
                 Field mActivityCallbacksField = obj.getClass().getDeclaredField("mActivityCallbacks");
                 mActivityCallbacksField.setAccessible(true);
                 List<Object> mActivityCallbacks = (List<Object>) mActivityCallbacksField.get(obj);
 
                 if (mActivityCallbacks.size() > 0) {
+                    //LaunchActivityItem extends ClientTransactionItem
                     String className = "android.app.servertransaction.LaunchActivityItem";
                     if (mActivityCallbacks.get(0).getClass().getCanonicalName().equals(className)) {
                         Object object = mActivityCallbacks.get(0);
@@ -285,6 +277,39 @@ public class HookUtils {
                 Log.e("aaa", "handleActivity: " + e.getMessage());
                 e.printStackTrace();
             }
+        }
+
+    }
+
+    private static Field getActivityManagerSingletonField() {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {// >= 10.0
+                Log.i("aaa", "enter real:" + Build.VERSION.SDK_INT);
+                Class<?> classActivityManagerNative = Class.forName("android.app.ActivityTaskManager");
+                return classActivityManagerNative.getDeclaredField("IActivityTaskManagerSingleton");
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                // 26 27 28(8.0 - 9.0)
+                Log.i("aaa", "enter >= 8.0 && <= 9.0 --real:" + Build.VERSION.SDK_INT);
+                Class<?> classActivityManagerNative = Class.forName("android.app.ActivityManager");
+                return classActivityManagerNative.getDeclaredField("IActivityManagerSingleton");
+            } else {
+                Log.i("aaa", "enter < 8.0 --real:" + Build.VERSION.SDK_INT);
+                Class<?> classActivityManager = Class.forName("android.app.ActivityManagerNative");
+                return classActivityManager.getDeclaredField("gDefault");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("cannot find singleton field");
+        }
+    }
+
+    private static Class<?> getActivityManagerClazz() {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                return Class.forName("android.app.IActivityTaskManager");
+            }
+            return Class.forName("android.app.IActivityManager");
+        } catch (Exception e) {
+            throw new RuntimeException("cannot find singleton field");
         }
     }
 }
