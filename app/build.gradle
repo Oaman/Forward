@@ -16,6 +16,7 @@ auto {
 
 android {
     compileSdkVersion rootProject.ext.compileSdk
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     dataBinding {
         enabled = true
@@ -67,6 +68,7 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+    ndkVersion 'D:\\develop\\adt-bundle-windows-x86-20130729\\sdk\\ndk-bundle'
 
 }
 

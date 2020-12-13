@@ -30,7 +30,14 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="hookNoRegisterActivity"
+        android:onClick="startNoRegisterActivity"
         android:text="Hook no register Activity"
+        android:textAllCaps="false" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="startPluginApkActivity"
+        android:text="启动插件apk中的Activity"
         android:textAllCaps="false" />
 </LinearLayout>
