@@ -1,3 +1,4 @@
+include ':pluginapk'
 include ':base'
 include ':webview'
 include ':dispatch'

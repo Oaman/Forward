@@ -20,6 +20,7 @@
             <option value="$PROJECT_DIR$/ipc" />
             <option value="$PROJECT_DIR$/javalib" />
             <option value="$PROJECT_DIR$/plugin" />
+            <option value="$PROJECT_DIR$/pluginapk" />
             <option value="$PROJECT_DIR$/token" />
             <option value="$PROJECT_DIR$/webview" />
           </set>

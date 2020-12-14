@@ -1,6 +1,7 @@
 package com.oman.plugin;
 
 import com.android.build.gradle.AppExtension;
+import com.android.build.gradle.AppPlugin;
 import com.android.build.gradle.api.ApplicationVariant;
 import com.android.build.gradle.api.BaseVariantOutput;
 
@@ -18,6 +19,7 @@ import java.io.File;
 public class AutoJiaguPlugin implements Plugin<Project> {
     @Override
     public void apply(Project project) {
+//        project.getPlugins().hasPlugin(AppPlugin.class);
         /**
          * auto 是为了在使用的时候配置的
          * ConfigModel 是一个包含了配置信息的类
