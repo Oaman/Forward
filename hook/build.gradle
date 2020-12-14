@@ -32,3 +32,28 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
 }
+
+//TODO 此处字节码插桩是为了解决低版本就是CLASS_ISPREVERIFIED的问题
+// gradle有很多的任务 每一个任务都有doFirst和doLast
+// compileDebugJavaWithJavac 是编译代码，但是每个module都会执行这一段代码，所以应该在transformClassesWithDexBuilderForDebug的doFirst中执行
+// 3.1.3transformClassesWithDexBuilderForDebug 是将class编译为dex文件(在6.5中有差异)
+// 所以插桩需要在doFirst中执行
+afterEvaluate({
+    /**
+     * 1 需要找到所有的class
+     * 2 过滤掉不需要插桩的class
+     * 3 插桩即可
+     */
+    android.getApplicationVariants().all { variant ->
+        String variantName = variant.name
+        String UpperName = variantName.capitalize()
+
+        Task dexTask = project.getTasks().findByName("dexBuilder" + UpperName)
+        dexTask.doFirst {
+            FileCollection files = dexTask.getInputs().getFiles()
+            for (File file : files) {
+                println "--- ${file.getAbsolutePath()}"
+            }
+        }
+    }
+})
